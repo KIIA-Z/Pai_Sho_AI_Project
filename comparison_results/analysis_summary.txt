@@ -1,0 +1,30 @@
+Transformer vs Q-Learning Analysis Summary
+========================================
+
+Games Analyzed: 10000
+Transformer Wins: 6012 (60.1%)
+Q-Learning Wins: 3988 (39.9%)
+Draws: 0 (0.0%)
+
+Average Game Length: 11.0 moves
+
+Move Time Analysis:
+  Transformer Avg. Move Time: 0.0201 seconds
+  Q-Learning Avg. Move Time: 0.0003 seconds
+  Transformer Speed Advantage: 0.0x
+
+Move Pattern Analysis:
+  Transformer Unique Move Types: 13
+  Q-Learning Unique Move Types: 4
+  Best Move Agreement Rate: 25.0%
+  Average Move Ranking Correlation: 0.151
+
+Top 3 Move Patterns for Transformer:
+  plant_<TileType.LILY: 2>: 22908 times
+  move_short: 16844 times
+  plant_<TileType.JASMINE: 3>: 10549 times
+
+Top 3 Move Patterns for Q-Learning:
+  plant_<TileType.LILY_ACCENT: 12>: 23289 times
+  move_short: 14645 times
+  plant_<TileType.WHITE_LOTUS_ACCENT: 11>: 10000 times

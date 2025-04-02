@@ -1,0 +1,15 @@
+{
+  "win_rate": 0.9,
+  "loss_rate": 0.1,
+  "draw_rate": 0.0,
+  "avg_game_length": 51.4,
+  "avg_harmony_count": 5.2,
+  "total_games": 10,
+  "eval_time": 809.030999660492,
+  "avg_time_per_game": 80.9030999660492,
+  "timestamp": "2025-03-07 08:51:56",
+  "model_path": "models/model_iter_49.pth",
+  "opponent_type": "random",
+  "opponent_model": "model\\model_iter_0.pth",
+  "mcts_simulations": 100
+}
