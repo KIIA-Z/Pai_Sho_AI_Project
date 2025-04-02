@@ -232,19 +232,65 @@ class OpeningBook:
             The move that was made, or None if it can't be determined
         """
         # This is a simplified example - you'll need to adapt to your game logic
-        # Implement based on how moves are represented in your game
 
-        # For planting moves, there should be one more piece on the board
-        # For moving moves, the total number of pieces remains the same
+        # Check if state tracking already provides this information
+        if hasattr(state2, 'last_move') and state2.last_move:
+            return state2.last_move
 
-        # This is a placeholder implementation - you'll need to fill in the details
-        # based on your specific game representation
-
-        # Example:
-        if hasattr(state1, 'last_move') and hasattr(state2, 'previous_move'):
+        if hasattr(state2, 'previous_move') and state2.previous_move:
             return state2.previous_move
 
-        # Placeholder
+        # If we don't have direct move tracking, try to infer move from board difference
+        try:
+            # For planting: there should be exactly one more piece on the board
+            # For moving: the total number of pieces stays the same but positions change
+
+            # Compare board states to detect changes
+            if hasattr(state1, 'board') and hasattr(state2, 'board'):
+                board1 = state1.board
+                board2 = state2.board
+
+                # Find differences
+                new_pieces = []
+                moved_pieces = []
+                removed_pieces = []
+
+                for y in range(BOARD_SIZE):
+                    for x in range(BOARD_SIZE):
+                        if board1[y][x] == 0 and board2[y][x] != 0:
+                            # A piece was added here
+                            new_pieces.append((x, y, board2[y][x]))
+                        elif board1[y][x] != 0 and board2[y][x] == 0:
+                            # A piece was removed from here
+                            removed_pieces.append((x, y, board1[y][x]))
+                        elif board1[y][x] != 0 and board2[y][x] != 0 and board1[y][x] != board2[y][x]:
+                            # A piece was changed here
+                            moved_pieces.append((x, y, board1[y][x], board2[y][x]))
+
+                # Try to reconstruct the move
+                if len(new_pieces) == 1 and not removed_pieces:
+                    # Planting move
+                    x, y, tile_value = new_pieces[0]
+                    # Convert value to TileType
+                    tile_type = None
+                    for t in TileType:
+                        if t.value == tile_value:
+                            tile_type = t
+                            break
+
+                    if tile_type:
+                        return ("plant", tile_type, x, y)
+
+                elif len(removed_pieces) == 1 and len(new_pieces) == 1:
+                    # Moving move
+                    from_x, from_y, _ = removed_pieces[0]
+                    to_x, to_y, _ = new_pieces[0]
+                    return ("move", from_x, from_y, to_x, to_y)
+
+        except Exception as e:
+            print(f"Error inferring move: {e}")
+
+        # Couldn't determine the move
         return None
 
     def get_stats(self):
@@ -260,11 +306,11 @@ class OpeningBook:
         }
 
 
-# Sample opening book entries for Skud Pai Sho
+# Create a sample opening book with common openings
 def create_sample_opening_book():
     """
-    Create a sample opening book with common openings.
-    This should be expanded with actual good openings discovered through play.
+    Create a sample opening book with common openings for Skud Pai Sho.
+    Uses available tile types from the game implementation.
     """
     book = OpeningBook(book_file="data/sample_opening_book.json")
 
@@ -272,11 +318,43 @@ def create_sample_opening_book():
     from game.state import SkudPaiShoState
     state = SkudPaiShoState()
 
-    # Add some sample opening moves
-    # First moves for player 1
-    book.add_move(state, ("plant", TileType.FIRE, 4, 4), weight=0.9)
-    book.add_move(state, ("plant", TileType.WATER, 3, 3), weight=0.8)
-    book.add_move(state, ("plant", TileType.AIR, 4, 3), weight=0.7)
+    # Get the available tile types (excluding EMPTY which is usually 0)
+    tile_types = list(TileType)
+    if hasattr(TileType, 'EMPTY') and TileType.EMPTY in tile_types:
+        tile_types.remove(TileType.EMPTY)
+    elif 0 in [t.value for t in tile_types]:
+        # Remove any tile type with value 0 (likely EMPTY)
+        tile_types = [t for t in tile_types if t.value != 0]
+
+    # If there are no tile types available, print warning and return
+    if not tile_types:
+        print("Warning: No tile types found in TileType enumeration.")
+        return book
+
+    # Add some sample opening moves for the center and nearby positions
+    # First moves for player 1 (using whatever tile types are available)
+    center = BOARD_SIZE // 2
+
+    # Add moves for different tile types at strategic positions
+    for i, tile_type in enumerate(tile_types[:3]):  # Use up to 3 different tile types
+        # Strategic positions near center
+        positions = [
+            (center, center),  # Center
+            (center - 1, center - 1),  # Top-left of center
+            (center + 1, center - 1),  # Top-right of center
+            (center - 1, center + 1),  # Bottom-left of center
+            (center + 1, center + 1),  # Bottom-right of center
+        ]
+
+        if i < len(positions):
+            x, y = positions[i]
+            book.add_move(state, ("plant", tile_type, x, y), weight=0.9 - (i * 0.1))
+            print(f"Added opening book move: plant {tile_type} at ({x},{y})")
+
+    # Add a few more moves with lower weights
+    if len(tile_types) > 0:
+        book.add_move(state, ("plant", tile_types[0], 1, 1), weight=0.5)
+        book.add_move(state, ("plant", tile_types[0], BOARD_SIZE - 2, BOARD_SIZE - 2), weight=0.5)
 
     # Save the book
     book.save()
@@ -285,8 +363,6 @@ def create_sample_opening_book():
 
 
 # Function to integrate opening book with MCTS
-# In opening_book.py, modify the get_move_with_opening_book_and_mcts function
-
 def get_move_with_opening_book_and_mcts(model, state, opening_book, mcts_simulations=800, temperature=0.5):
     """
     Get a move using the opening book if available, otherwise fall back to MCTS.
@@ -306,6 +382,7 @@ def get_move_with_opening_book_and_mcts(model, state, opening_book, mcts_simulat
 
     if book_move:
         # We found a book move
+        print(f"Using opening book move: {book_move}")
         return book_move, None  # No policy needed for book moves
 
     # Fall back to MCTS
