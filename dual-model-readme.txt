@@ -122,3 +122,8 @@ The HTML report includes:
 - Matplotlib, Seaborn
 - Skud Pai Sho game implementation
 - Both transformer model and Q-learning agent implementations
+
+python evaluate_skud_pai_sho_enhanced.py \
+  --transformer_models models/transformer_model.pth \
+  --q_learning_models models/q_learning_model.pkl \
+  --model_names "Transformer A" "Q-Learning A"

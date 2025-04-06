@@ -860,7 +860,7 @@ class SkudPaiShoEvaluationEnhanced:
             plt.savefig(os.path.join(self.output_dir, 'harmony_by_model.png'))
 
         return harmony_results
-    
+
     def game_length_analysis(self):
         """
         Analyze game length statistics.
