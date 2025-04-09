@@ -1,0 +1,34 @@
+{
+  "average_length": 98.6,
+  "median_length": 71.5,
+  "by_winner": [
+    {
+      "Winner": "Q-Learning",
+      "Length": 80.125
+    },
+    {
+      "Winner": "Transformer",
+      "Length": 76.12
+    },
+    {
+      "Winner": "draw",
+      "Length": 200.0
+    }
+  ],
+  "first_player_wins_avg_length": 72.47826086956522,
+  "second_player_wins_avg_length": 87.7,
+  "by_matchup_type": [
+    {
+      "Matchup": "Draw",
+      "Length": 200.0
+    },
+    {
+      "Matchup": "Q-Learning > Transformer",
+      "Length": 80.125
+    },
+    {
+      "Matchup": "Transformer > Q-Learning",
+      "Length": 76.12
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "transformer": {
+    "winning_sequences": {},
+    "losing_sequences": {}
+  },
+  "q_learning": {
+    "winning_sequences": {},
+    "losing_sequences": {}
+  }
+}

@@ -123,7 +123,4 @@ The HTML report includes:
 - Skud Pai Sho game implementation
 - Both transformer model and Q-learning agent implementations
 
-python evaluate_skud_pai_sho_enhanced.py \
-  --transformer_models models/transformer_model.pth \
-  --q_learning_models models/q_learning_model.pkl \
-  --model_names "Transformer A" "Q-Learning A"
+python dual_model_framework.py --transformer_models MODELS/model_iter_49.pth --q_learning_models models/best_q_agent.pkl --model_names "Transformer" "Q-Learning"

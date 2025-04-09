@@ -1,0 +1,16 @@
+{
+  "Transformer": {
+    "win_rate": 0.625,
+    "loss_rate": 0.2,
+    "draw_rate": 0.175,
+    "games_played": 40,
+    "model_type": "transformer"
+  },
+  "Q-Learning": {
+    "win_rate": 0.2,
+    "loss_rate": 0.625,
+    "draw_rate": 0.175,
+    "games_played": 40,
+    "model_type": "q_learning"
+  }
+}

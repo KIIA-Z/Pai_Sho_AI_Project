@@ -1,0 +1,143 @@
+{
+  "summary": {
+    "models_evaluated": [
+      "Transformer",
+      "Q-Learning"
+    ],
+    "model_types": {
+      "Transformer": "transformer",
+      "Q-Learning": "q_learning"
+    },
+    "num_games_analyzed": 40,
+    "evaluation_timestamp": "2025-04-06 20:03:14",
+    "game_type": "Skud Pai Sho"
+  },
+  "win_rates": {
+    "Transformer": {
+      "win_rate": 0.625,
+      "loss_rate": 0.2,
+      "draw_rate": 0.175,
+      "games_played": 40,
+      "model_type": "transformer"
+    },
+    "Q-Learning": {
+      "win_rate": 0.2,
+      "loss_rate": 0.625,
+      "draw_rate": 0.175,
+      "games_played": 40,
+      "model_type": "q_learning"
+    }
+  },
+  "computational_efficiency": {
+    "Transformer": {
+      "avg_time": 3.6344332476728303,
+      "median_time": 3.309000015258789,
+      "max_time": 12.416998863220215,
+      "min_time": 0.08699917793273926,
+      "std_time": 1.2845999127185739,
+      "total_moves": 1977,
+      "model_type": "transformer"
+    },
+    "Q-Learning": {
+      "avg_time": 0.0006172356414019183,
+      "median_time": 0.0009984970092773438,
+      "max_time": 0.1569979190826416,
+      "min_time": 0.0,
+      "std_time": 0.003568147568320627,
+      "total_moves": 1967,
+      "model_type": "q_learning"
+    }
+  },
+  "harmony_analysis": {
+    "stage_harmony": [
+      {
+        "Stage": "early",
+        "Player1_Harmony": 0.1075,
+        "Player2_Harmony": 0.065,
+        "Total_Harmony": 0.1725
+      },
+      {
+        "Stage": "late",
+        "Player1_Harmony": 0.7737014166363967,
+        "Player2_Harmony": 1.0813657827824192,
+        "Total_Harmony": 1.855067199418816
+      },
+      {
+        "Stage": "mid",
+        "Player1_Harmony": 0.5284450063211125,
+        "Player2_Harmony": 0.5398230088495575,
+        "Total_Harmony": 1.06826801517067
+      }
+    ],
+    "winner_harmony": [
+      {
+        "Winner": "Q-Learning",
+        "Total_Harmony": 1.8408736349453978
+      },
+      {
+        "Winner": "Transformer",
+        "Total_Harmony": 1.4056752496058855
+      },
+      {
+        "Winner": "draw",
+        "Total_Harmony": 1.5471428571428572
+      }
+    ],
+    "model_harmony": [
+      {
+        "Model": "Q-Learning",
+        "Average_Harmony": 0.3922413793103448,
+        "Type": "q_learning"
+      },
+      {
+        "Model": "Transformer",
+        "Average_Harmony": 1.1343813387423936,
+        "Type": "transformer"
+      }
+    ]
+  },
+  "game_length_analysis": {
+    "average_length": 98.6,
+    "median_length": 71.5,
+    "by_winner": [
+      {
+        "Winner": "Q-Learning",
+        "Length": 80.125
+      },
+      {
+        "Winner": "Transformer",
+        "Length": 76.12
+      },
+      {
+        "Winner": "draw",
+        "Length": 200.0
+      }
+    ],
+    "first_player_wins_avg_length": 72.47826086956522,
+    "second_player_wins_avg_length": 87.7,
+    "by_matchup_type": [
+      {
+        "Matchup": "Draw",
+        "Length": 200.0
+      },
+      {
+        "Matchup": "Q-Learning > Transformer",
+        "Length": 80.125
+      },
+      {
+        "Matchup": "Transformer > Q-Learning",
+        "Length": 76.12
+      }
+    ]
+  },
+  "move_sequences": {
+    "transformer": {
+      "winning_sequences": {},
+      "losing_sequences": {}
+    },
+    "q_learning": {
+      "winning_sequences": {},
+      "losing_sequences": {}
+    }
+  }
+}

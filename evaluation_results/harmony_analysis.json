@@ -1,0 +1,48 @@
+{
+  "stage_harmony": [
+    {
+      "Stage": "early",
+      "Player1_Harmony": 0.1075,
+      "Player2_Harmony": 0.065,
+      "Total_Harmony": 0.1725
+    },
+    {
+      "Stage": "late",
+      "Player1_Harmony": 0.7737014166363967,
+      "Player2_Harmony": 1.0813657827824192,
+      "Total_Harmony": 1.855067199418816
+    },
+    {
+      "Stage": "mid",
+      "Player1_Harmony": 0.5284450063211125,
+      "Player2_Harmony": 0.5398230088495575,
+      "Total_Harmony": 1.06826801517067
+    }
+  ],
+  "winner_harmony": [
+    {
+      "Winner": "Q-Learning",
+      "Total_Harmony": 1.8408736349453978
+    },
+    {
+      "Winner": "Transformer",
+      "Total_Harmony": 1.4056752496058855
+    },
+    {
+      "Winner": "draw",
+      "Total_Harmony": 1.5471428571428572
+    }
+  ],
+  "model_harmony": [
+    {
+      "Model": "Q-Learning",
+      "Average_Harmony": 0.3922413793103448,
+      "Type": "q_learning"
+    },
+    {
+      "Model": "Transformer",
+      "Average_Harmony": 1.1343813387423936,
+      "Type": "transformer"
+    }
+  ]
+}

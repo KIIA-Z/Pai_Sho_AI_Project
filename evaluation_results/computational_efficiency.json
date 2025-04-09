@@ -1,0 +1,20 @@
+{
+  "Transformer": {
+    "avg_time": 3.6344332476728303,
+    "median_time": 3.309000015258789,
+    "max_time": 12.416998863220215,
+    "min_time": 0.08699917793273926,
+    "std_time": 1.2845999127185739,
+    "total_moves": 1977,
+    "model_type": "transformer"
+  },
+  "Q-Learning": {
+    "avg_time": 0.0006172356414019183,
+    "median_time": 0.0009984970092773438,
+    "max_time": 0.1569979190826416,
+    "min_time": 0.0,
+    "std_time": 0.003568147568320627,
+    "total_moves": 1967,
+    "model_type": "q_learning"
+  }
+}
