@@ -57,7 +57,7 @@ The project is organized into several main components:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/skud-pai-sho-ai.git
+   git clone https://github.com/KIIA-Z/Pai_Sho_AI_Project
    cd skud-pai-sho-ai
    ```
 
