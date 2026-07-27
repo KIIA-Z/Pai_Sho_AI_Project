@@ -1,0 +1,27 @@
+ignore
+# Byte-compiled / cached Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / editor config
+.idea/
+.vscode/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Trained model weights — large binaries
+models/
+*.pth
+*.pkl
